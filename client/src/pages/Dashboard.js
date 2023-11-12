@@ -19,7 +19,7 @@ const Dashboard = () => {
     const fetchData = async () => {
         try {
           const res = await axios.get(
-            `http://localhost:5001/product/getAll?page=${page}`
+            `https://roxiler-t5ax.onrender.com/product/getAll?page=${page}`
           );
           console.log(res);
           setProducts(res.data);
@@ -34,7 +34,7 @@ const Dashboard = () => {
     const fetchByMonth=async()=>{
         try {
             const res = await axios.get(
-              `http://localhost:5001/product/statistics/${month}`
+              `https://roxiler-t5ax.onrender.com/product/statistics/${month}`
             );
             console.log(res);
             setstatistics(res.data.products)
@@ -47,7 +47,7 @@ const Dashboard = () => {
         const fetchChartData = async()=>{
             try {
                 const res = await axios.get(
-                  `http://localhost:5001/product/getChart/${month}`
+                  `https://roxiler-t5ax.onrender.com/product/getChart/${month}`
                 );
                 console.log(res);
                 setChartArr(getChartArr(res.data.chartData))
@@ -62,7 +62,7 @@ const Dashboard = () => {
 
   const getChartArr = (chartData)=>{
     let arr = new Array(10).fill(0);
-            chartData.map((val)=>{
+             chartData.forEach((val)=>{
                 let index = Math.floor(val._id / 100);
                 // console.log(index);
                 arr[index]= val.count
